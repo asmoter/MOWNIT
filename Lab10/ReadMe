@@ -1,0 +1,5 @@
+Proszę napisać prgram rysujący fraktale IFS (Iterated Function Systems - układy iterowanych odwzorowań). 
+W celu otrzymania interesujących obrazów (paprotka, choinka)
+należy odwiednio dobrać parametry a, b, c, d, e, f układów równań postaci:
+x' = ax + by + c
+y' = dx + ey + f
