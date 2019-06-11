@@ -5,6 +5,7 @@ import pygame
 SCREEN_WIDTH, SCREEN_HEIGHT = 800, 700
 mode = 0
 restart = False
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 # X = [0]
 # Y = [0]
@@ -128,11 +129,11 @@ class Button:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
             if self.isOverButton(pos):
+                screen.fill((255, 250, 240))
+                pygame.display.flip()
                 self.active = not self.active
                 if self.active:
                     mode = self.value
-                else:
-                    restart = True
             else:
                 self.active = False
             self.color = (255, 218, 185) if self.active else (255, 182, 193)
@@ -140,8 +141,8 @@ class Button:
 
 def main():
 
+    global restart
     pygame.init()
-    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("IFS")
     font = pygame.font.SysFont('Consolas', 16)
     screen.fill((255, 250, 240))
@@ -163,8 +164,6 @@ def main():
                 b.handleEvent(event)
                 b.draw(screen, font)
 
-        # if restart:
-        #     screen.fill((255, 250, 240))
         pygame.display.update()
 
         if mode == 1:
@@ -189,11 +188,6 @@ def main():
             for i in range(len(X)):
                 pygame.draw.circle(screen, color, (int(X[i]*300 + 400), int(-Y[i]*300 + 550)), 1)
         pygame.display.update()
-        # if restart:
-        #     screen.fill((255, 250, 240))
-        # pygame.display.flip()
-        # pygame.time.delay(1000)
-        # running = False
 
 
 if __name__ == '__main__':
